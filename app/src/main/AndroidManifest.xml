@@ -35,6 +35,12 @@
         <activity
             android:name=".AdActivity"
             android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditNameActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
