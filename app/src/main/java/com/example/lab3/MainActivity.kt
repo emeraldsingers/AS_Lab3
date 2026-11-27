@@ -1,47 +1,64 @@
 package com.example.lab3
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.lab3.ui.theme.Lab3Theme
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Lab3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            MainScreen()
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun MainScreen() {
+    val context = LocalContext.current
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Lab3Theme {
-        Greeting("Android")
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Лабораторна робота 3", fontSize = 28.sp)
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { context.startActivity(Intent(context, Task1Activity::class.java)) }
+        ) {
+            Text(text = "Завдання 1 - Ліхтарик")
+        }
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { context.startActivity(Intent(context, CardActivity::class.java)) }
+        ) {
+            Text(text = "Завдання 2 - Банківська картка")
+        }
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { context.startActivity(Intent(context, ProfileActivity::class.java)) }
+        ) {
+            Text(text = "Завдання 3 - Особиста сторінка")
+        }
     }
 }
