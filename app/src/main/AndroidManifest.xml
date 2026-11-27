@@ -29,6 +29,12 @@
         <activity
             android:name=".ColorActivity"
             android:exported="false" />
+        <activity
+            android:name=".CardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
